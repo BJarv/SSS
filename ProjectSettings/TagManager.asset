@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - trailNode
+  - spawn
+  - enemy
   layers:
   - Default
   - TransparentFX
@@ -47,4 +49,7 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 3410391507
+    locked: 0
+  - name: UI
+    uniqueID: 802997257
     locked: 0

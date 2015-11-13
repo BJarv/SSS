@@ -12,7 +12,8 @@ public static class poly {
 				inside = !inside;
 				
 		}
-		if(inside && !polyPoints[polyPoints.Length-1].GetComponent<nearNodes>().isClose(polyPoints[0])) { //hotfix check to make sure that the tail and head of the trail are near each other
+
+		if(inside && !polyPoints[polyPoints.Length-1].GetComponent<nearNodes>().isClose(polyPoints)) { //hotfix check to make sure that the tail and head of the trail are near each other
 			inside = !inside; //if the tail isnt near the head, fail the check.
 		}
 
