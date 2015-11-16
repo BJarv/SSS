@@ -24,7 +24,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 131172}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.212471008, y: 1.01053369, z: 0}
+  m_LocalPosition: {x: 18.3908138, y: -.926780879, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -43,7 +43,7 @@ MonoBehaviour:
   nodeLayer:
     serializedVersion: 2
     m_Bits: 256
-  searchRange: 1
+  searchRange: .5
 --- !u!212 &21240174
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -11,7 +11,7 @@ public class playerhealthdisplay : MonoBehaviour {
 	}
 	// Update is called once per frame
 	void Update () {
-		Debug.Log (player.GetComponent<Health>().currentHealth);
+		//Debug.Log (player.GetComponent<Health>().currentHealth);
 		GetComponent<Text>().text = "Player Health: " + player.GetComponent<Health>().health ();
 	}
 }
