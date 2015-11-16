@@ -100,7 +100,7 @@ public class trailController : MonoBehaviour {
 				if(poly.ContainsPoint(trails[i], enemies[j].transform.position, trails[i][0].transform.parent.GetComponent<Owner>().getOwner())) {//check if enemy is inside polygon
 					//ene.GetComponent<Health>().hurt(trailDamage); //destroy enemy inside polygon CAUSES MULTIPLE ENEMIES TO SPAWN
 					Destroy(enemies[j]);
-					Camera.main.GetComponent<EnemySpawner>().spawn(); //spawn new enemy
+					Camera.main.GetComponent<EnemySpawner>().spawn(); //spawn new enemy 
 				}
 			}
 		}
