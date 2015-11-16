@@ -13,6 +13,7 @@ public class trailController : MonoBehaviour {
 	//List<GameObject> otherPlayersNodes;
 
 	void Start(){
+		Physics2D.IgnoreLayerCollision(8, 9, true);
 		players = new List<GameObject>(setPlayers);
 		trails = new List<GameObject[]>();
 		//otherPlayersNodes = new List<GameObject>();
@@ -42,11 +43,12 @@ public class trailController : MonoBehaviour {
 		}
 
 		for(int i = 0; i < players.Count;){
+			//Debug.Log ("i: " + i);
 			if(checkedTrails[i]) { //skips over trails that have already been added into other trails.
 				i++;
 				continue;
 			}
-			trails.Add(players[0].GetComponent<trailMaker>().getTrail ());
+			trails.Add(players[i].GetComponent<trailMaker>().getTrail ());
 
 			checkedTrails[i] = true;
 			//i++; //increment i
@@ -56,18 +58,33 @@ public class trailController : MonoBehaviour {
 			//}
 
 			//check to see if head near any other persons trail, if so stitch head of trail to tail of the near trail, repeat check as long as there are players.
-			while(trails[i][trails[i].Length-1].GetComponent<nearNodes>().areOthersClose ()){
-				if(checkedTrails[i]) { //skips over trails that have already been added into other trails.
-					i++;
-					continue;
-				}
+			if(i < players.Count){
+				//i++;
+			}
+			
+			for(int j = 0; trails[i][trails[i].Length-1].GetComponent<nearNodes>().areOthersClose () && j < players.Count;){
+				//Debug.Log ("YUH");
+				//if(checkedTrails[j]) { //skips over trails that have already been added into other trails.
+
+
+				//	j++;
+					//continue;
+				//}
 				List<GameObject> tempTrail = new List<GameObject>();
-				int indexOfFoundPlayer = players.BinarySearch(trails[i][trails[i].Length-1].GetComponent<nearNodes>().whichOther ());
+				int indexOfFoundPlayer = players.IndexOf(trails[i][trails[i].Length-1].GetComponent<nearNodes>().whichOther ()); //searches for neighboring nodes of head of trail
+				Debug.Log ("indexoffoundplayer: " + indexOfFoundPlayer);
 				checkedTrails[indexOfFoundPlayer] = true; //mark trails that are completed as they are combined into main trail.
 				tempTrail.AddRange(trails[i]);
-				tempTrail.AddRange(trails[indexOfFoundPlayer]);
+				tempTrail.AddRange(players[indexOfFoundPlayer].GetComponent<trailMaker>().getTrail ());
 				trails[i] = tempTrail.ToArray();
-				i++;
+				j++;
+			}
+			
+			for(int j = 0; j < players.Count; j++){ // set i to next unchecked trail.
+				if(!checkedTrails[j]) {
+					i = j; 
+					break;
+				}
 			}
 			
 			
@@ -75,11 +92,14 @@ public class trailController : MonoBehaviour {
 
 		//for each isolated trail:
 		for(int i = 0; i < trails.Count; i++){
+			/*for(int j = 1; j < trails[i].Length; j++){
+				Debug.DrawLine (trails[i][j-1].transform.position, trails[i][j].transform.position, Color.red, 0.1f, false);
+			}*/
 			enemies = GameObject.FindGameObjectsWithTag("enemy");
-			foreach(GameObject ene in enemies) {
-				if(poly.ContainsPoint(trails[i], ene.transform.position)) {//check if enemy is inside polygon
+			for(int j = 0; j < enemies.Length; j++) {
+				if(poly.ContainsPoint(trails[i], enemies[j].transform.position, trails[i][0].transform.parent.GetComponent<Owner>().getOwner())) {//check if enemy is inside polygon
 					//ene.GetComponent<Health>().hurt(trailDamage); //destroy enemy inside polygon CAUSES MULTIPLE ENEMIES TO SPAWN
-					Destroy(ene);
+					Destroy(enemies[j]);
 					Camera.main.GetComponent<EnemySpawner>().spawn(); //spawn new enemy
 				}
 			}

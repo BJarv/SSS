@@ -56,6 +56,7 @@ public class trailMaker : MonoBehaviour {
 
 	public void addNode(){ //adds new node at player position
 		GameObject tempNode = (GameObject)Instantiate(trailNode, transform.position, Quaternion.identity);
+
 		tempNode.transform.parent = trailContainer.transform;
 		trail.Enqueue (tempNode); //add a trail point to current location
 	}

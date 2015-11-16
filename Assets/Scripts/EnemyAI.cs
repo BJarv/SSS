@@ -9,7 +9,8 @@ public class EnemyAI : MonoBehaviour {
 	public float damage = 1f;
 	// Use this for initialization
 	void Start () {
-		target = GameObject.Find ("Player").transform;
+		GameObject[] choose = GameObject.FindGameObjectsWithTag("Player");
+		target = choose[Random.Range (0, choose.Length)].transform;
 	}
 	
 	void Update () {

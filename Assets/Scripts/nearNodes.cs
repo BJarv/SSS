@@ -3,7 +3,7 @@ using System.Collections;
 
 public class nearNodes : MonoBehaviour{
 	public LayerMask nodeLayer;
-	public float searchRange = .01f;
+	public float searchRange = .5f;
 	GameObject playerNearNode; //player that is identified with areOthersClose
 	Collider2D[] othersNearNodes; //filled in areOthersClose, nodes that are near to this node that dont belong to same trail
 
@@ -51,6 +51,7 @@ public class nearNodes : MonoBehaviour{
 			for(int i = 0; i < othersNearNodes.Length; i++){
 				if(othersNearNodes[i].transform.parent.GetComponent<Owner>().getOwner() != transform.parent.GetComponent<Owner>().getOwner ()){ //if found node is not from the same player, save which player.
 					playerNearNode = othersNearNodes[i].transform.parent.GetComponent<Owner>().getOwner();
+					Debug.Log ("near nodes not parents");
 					return true;
 				}
 			}
@@ -61,5 +62,9 @@ public class nearNodes : MonoBehaviour{
 	public GameObject whichOther(){
 		return playerNearNode;
 	}
+
+	//void OnDrawGizmos(){
+	//	Gizmos.DrawWireSphere(transform.position, searchRange);
+	//}
 
 }
