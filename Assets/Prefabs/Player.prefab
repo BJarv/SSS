@@ -14,6 +14,7 @@ GameObject:
   - 114: {fileID: 11480686}
   - 58: {fileID: 5803988}
   - 114: {fileID: 11465086}
+  - 96: {fileID: 9699324}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -62,6 +63,51 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: .600000024
+--- !u!96 &9699324
+TrailRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 120968}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 1
+  m_ReflectionProbeUsage: 1
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_ImportantGI: 0
+  m_AutoUVMaxDistance: .5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_Time: 5
+  m_StartWidth: 1
+  m_EndWidth: 1
+  m_Colors:
+    m_Color[0]:
+      serializedVersion: 2
+      rgba: 4278190335
+    m_Color[1]:
+      serializedVersion: 2
+      rgba: 4278190335
+    m_Color[2]:
+      serializedVersion: 2
+      rgba: 4278190335
+    m_Color[3]:
+      serializedVersion: 2
+      rgba: 4278190335
+    m_Color[4]:
+      serializedVersion: 2
+      rgba: 255
+  m_MinVertexDistance: .100000001
+  m_Autodestruct: 0
 --- !u!114 &11465086
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -89,7 +135,7 @@ MonoBehaviour:
   trailObj: {fileID: 197662, guid: 625665d2c7dba496ca5785b9da70788f, type: 2}
   enemies: []
   trailNode: {fileID: 131172, guid: e1fa824666daf4898bd339f803636092, type: 2}
-  trailLength: 20
+  trailLength: 15
   trailFreq: .100000001
   trailDamage: 1
 --- !u!114 &11486642
@@ -105,7 +151,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controllable: 1
   speed: 8
-  playerNum: 0
+  playerNum: 1
 --- !u!212 &21279188
 SpriteRenderer:
   m_ObjectHideFlags: 1

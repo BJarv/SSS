@@ -9,6 +9,7 @@ public class trailController : MonoBehaviour {
 	List<GameObject> players;
 	List<GameObject[]> trails;
 	List<bool> checkedTrails;
+	public AudioClip pop;
 
 	//List<GameObject> otherPlayersNodes;
 
@@ -38,8 +39,8 @@ public class trailController : MonoBehaviour {
 
 		//every frame:
 
-		for(int i = 0; i < players.Count; i++){
-			players[i].GetComponent<trailMaker>().addNode();
+		for(int j = 0; j < players.Count; j++){
+			players[j].GetComponent<trailMaker>().addNode(); //add node at head of trail
 		}
 
 		for(int i = 0; i < players.Count;){
@@ -99,6 +100,7 @@ public class trailController : MonoBehaviour {
 			for(int j = 0; j < enemies.Length; j++) {
 				if(poly.ContainsPoint(trails[i], enemies[j].transform.position, trails[i][0].transform.parent.GetComponent<Owner>().getOwner())) {//check if enemy is inside polygon
 					//ene.GetComponent<Health>().hurt(trailDamage); //destroy enemy inside polygon CAUSES MULTIPLE ENEMIES TO SPAWN
+					GetComponent<AudioSource>().PlayOneShot(pop);//play pop noise
 					Destroy(enemies[j]);
 					Camera.main.GetComponent<EnemySpawner>().spawn(); //spawn new enemy 
 				}
@@ -107,7 +109,7 @@ public class trailController : MonoBehaviour {
 
 		yield return new WaitForSeconds(.1f);
 
-		for(int i = 0; i < players.Count; i++){
+		for(int i = 0; i < players.Count; i++){ //tell each player to remove the tail node
 			players[i].GetComponent<trailMaker>().removeNode();
 		}
 		trails.Clear();

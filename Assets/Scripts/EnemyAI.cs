@@ -8,7 +8,10 @@ public class EnemyAI : MonoBehaviour {
 	public float speed;	
 	public float damage = 1f;
 	// Use this for initialization
+	public playerhealthdisplay health;
+
 	void Start () {
+		health = GameObject.Find ("Canvas/Text").GetComponent<playerhealthdisplay>();
 		GameObject[] choose = GameObject.FindGameObjectsWithTag("Player");
 		target = choose[Random.Range (0, choose.Length)].transform;
 	}
@@ -20,7 +23,7 @@ public class EnemyAI : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D colObj){
 		if(colObj.tag == "Player"){
-			colObj.gameObject.GetComponent<Health>().hurt (damage);
+			health.hurt ();
 		}
 	}
 }

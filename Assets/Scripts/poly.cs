@@ -19,16 +19,16 @@ public static class poly {
 			inside = !inside; //if the tail isnt near the head, fail the check.
 		}
 
-		for(int i = 1; i < polyPoints.Length; i++){
+		/*for(int i = 1; i < polyPoints.Length - 1; i++){
 			if(inside){
 				Debug.DrawLine (new Vector3(polyPoints[i-1].transform.position.x, polyPoints[i-1].transform.position.y, polyPoints[i-1].transform.position.z - 1), new Vector3(polyPoints[i].transform.position.x, polyPoints[i].transform.position.y, polyPoints[i].transform.position.z - 1), Color.green, 3f, false);
 			} else {
 				Debug.DrawLine (new Vector3(polyPoints[i-1].transform.position.x, polyPoints[i-1].transform.position.y, polyPoints[i-1].transform.position.z), new Vector3(polyPoints[i].transform.position.x, polyPoints[i].transform.position.y, polyPoints[i].transform.position.z), Color.red, .1f, true);
 			}
-		}
-		if(inside){
-			Debug.DrawLine (new Vector3(polyPoints[polyPoints.Length-1].transform.position.x, polyPoints[polyPoints.Length-1].transform.position.y, polyPoints[polyPoints.Length-1].transform.position.z - 1), new Vector3(trailOwner.transform.position.x, trailOwner.transform.position.y, trailOwner.transform.position.z - 1), Color.green, 3f, false);
-		}
+		}*/
+		//if(inside){
+			//Debug.DrawLine (new Vector3(polyPoints[polyPoints.Length-1].transform.position.x, polyPoints[polyPoints.Length-1].transform.position.y, polyPoints[polyPoints.Length-1].transform.position.z - 1), new Vector3(trailOwner.transform.position.x, trailOwner.transform.position.y, trailOwner.transform.position.z - 1), Color.green, 3f, false);
+		//}
 		return inside;
 	}
 }
